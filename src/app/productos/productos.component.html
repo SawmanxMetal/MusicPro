@@ -1,0 +1,96 @@
+
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-uppercase" href="#">MusicClon</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+   
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="row mx-auto">
+              <ul class="navbar-nav">
+
+                  <li class="nav-item">
+                    <a
+                      class="nav-link text-uppercase active"
+                      aria-current="page"
+                      href="#"
+                      >Home</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-uppercase" href="#">Audio pro</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-uppercase" href="#">Microfonos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-uppercase" href="#">Estudio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-uppercase" href="#">Guitarras</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-uppercase" href="#">Baterias</a>
+                  </li>
+                </ul>
+          </div>
+
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row">
+        <div *ngFor="let prod of productos; index as i" class="col-lg-4 mt-5" >
+
+          <div class="card shadow" style="width: 18rem;">
+            <img class="card-img-top" src="{{prod.imagen}}" height="300" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text text-secondary text-center">SKU: {{prod.sku}}</p>
+              <h5 class="card-title text-uppercase text-center">{{prod.nombre}}</h5>
+              <p class="card-text text-bold">Desc.: {{prod.descripcion}}</p>
+              <p class="card-text text-bold">Precio: $ {{prod.precio}}</p>
+              <p class="card-text text-bold">Stock: {{prod.stock}}</p>
+             
+              
+              <div class="flex-items .flex-container">
+             
+             
+                <button class="btn btn-primary btn-lg" (click)="addToCart(prod)">
+                 Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+  
+    </div>
+    <div class="col-lg-4"><app-carrito></app-carrito></div>
+  </div>
+</div>
+
+  <div hidden>
+    
+  </div>
+
+

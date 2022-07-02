@@ -1,0 +1,65 @@
+<div class="container mt-5">
+    
+    <div class="row">
+        <div class="col-lg-10">
+            <div>
+                <h4 class="mb-3 text-center">Finalize su compra</h4>
+            </div>
+            <div class="table-responsive">
+  
+                <table class="table table-bordered table-hover">
+                    <thead class='thead'>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Image</th>
+                        <th>SKU</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>PrecioTotal </th>
+                      
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let list of productosJSON;index as i">
+                        <td>{{i+1}}</td>
+                            <td>
+                                <img
+                                    class="img-thumbnail .img-responsive"
+                                    src="{{list.imagen}}"
+                                    style="height:80px;width:80px;"
+                                />  
+                            </td>
+                            
+                            <td>{{list.sku}}</td>        
+                            <td>{{list.nombre}}</td>
+                            <td>{{list.precio | currency: 'CLP'}}</td>
+                            <td>{{list.cantidad}}</td>
+                            <td>{{list.precio * list.cantidad | currency: 'CLP'}}</td>
+                          
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr >
+                           <h5>Precio total</h5> 
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td>{{totalQuantity}}</td>
+                           <td>{{total | currency: 'CLP'}}</td>
+                        </tr>
+                        
+                    </tfoot>
+                 
+                </table>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-warning btn-lg" (click)="volver()">Seguir Comprando</button>
+                <button class="btn btn-primary btn-lg">Finalizar Compra</button>
+            </div>
+          
+        </div>
+    </div>
+   
+</div>
