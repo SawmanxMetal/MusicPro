@@ -4,6 +4,8 @@ import { IProducts } from "../carrito/products";
 import { ProductosService } from './../service/productos.service';
 import { ProductcarService } from './productcar.service';
 //import { IProducts } from './../products';
+import  axios  from 'axios';
+
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
@@ -11,7 +13,7 @@ import { ProductcarService } from './productcar.service';
 })
 export class CarritoComponent implements OnInit {
   productos: any;
-
+  mindicador: any;
   cartProducts: IProducts[] = [];
   totalQuantity!: number;
   price!: number;
@@ -50,6 +52,8 @@ export class CarritoComponent implements OnInit {
       this.sum();
     });
 
+    this.clpToUsd();
+
   }
 
   deleteProduct(sku:any) {
@@ -82,11 +86,17 @@ export class CarritoComponent implements OnInit {
   }
 
 
-
-
-
-
-
+  clpToUsd() {
+    axios.get('https://mindicador.cl/api')
+    .then((response:any) => {
+      this.mindicador =  response.data.dolar.valor
+      console.log(this.mindicador);
+    })
+    .catch((e:any) => {
+        // Capturamos los errores
+        console.log('error: ', e);
+    })
+}
 
   checkout() {
     this.router.navigate(["/checkout"]);

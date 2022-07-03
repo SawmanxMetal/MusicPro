@@ -2,7 +2,7 @@
 <header class="header">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand text-uppercase" href="#">MusicClon</a>
+      <a class="navbar-brand text-uppercase" href="#">MusicPro</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -68,6 +68,7 @@
               <h5 class="card-title text-uppercase text-center">{{prod.nombre}}</h5>
               <p class="card-text text-bold">Desc.: {{prod.descripcion}}</p>
               <p class="card-text text-bold">Precio: $ {{prod.precio}}</p>
+              <p class="card-text text-bold">Precio USD:  {{prod.precio / mindicador | currency: 'USD'}}</p>
               <p class="card-text text-bold">Stock: {{prod.stock}}</p>
              
               

@@ -35,7 +35,11 @@
                             <td>{{list.nombre}}</td>
                             <td>{{list.precio | currency: 'CLP'}}</td>
                             <td>{{list.cantidad}}</td>
-                            <td>{{list.precio * list.cantidad | currency: 'CLP'}}</td>
+                            <td>{{list.precio * list.cantidad | currency: 'CLP'}}
+                                <br>
+                                USD {{list.precio * list.cantidad/ mindicador | currency: 'USD'}}
+
+                            </td>
                           
                         </tr>
                     </tbody>
@@ -47,7 +51,11 @@
                            <td></td>
                            <td></td>
                            <td>{{totalQuantity}}</td>
-                           <td>{{total | currency: 'CLP'}}</td>
+                           <td>
+                            {{ total | currency: 'CLP'}}
+                            <br>
+                            USD {{ total / mindicador | currency: 'USD'}}
+                           </td>
                         </tr>
                         
                     </tfoot>
@@ -56,10 +64,14 @@
             </div>
             <div class="d-flex justify-content-between">
                 <button class="btn btn-warning btn-lg" (click)="volver()">Seguir Comprando</button>
-                <button class="btn btn-primary btn-lg">Finalizar Compra</button>
+                <button class="btn btn-primary btn-lg" (click)="updateProduct()">Finalizar Compra</button>
+            
             </div>
           
         </div>
     </div>
    
 </div>
+
+
+

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import {IProducts} from '../products';
 import { ProductcarService } from './../carrito/productcar.service';
+import  axios  from 'axios';
 
 @Component({
   selector: 'app-productos',
@@ -15,8 +16,11 @@ export class ProductosComponent implements OnInit {
   
 
   constructor( private productService: ProductosService, private router: Router, private productCarService:ProductcarService) { }
+  
+  mindicador! : any;
   products!:IProducts[];
   productos: any;
+  
   ngOnInit(): void {
     this.productService.getEntrega().subscribe((productos: any) => {
       this.productos = productos;
@@ -26,7 +30,7 @@ export class ProductosComponent implements OnInit {
 
     //  this.productos = this.productCarService.getProd()
     //   console.log(this.productos );
-
+    this.clpToUsd()
     
   }
 
@@ -41,14 +45,25 @@ export class ProductosComponent implements OnInit {
   
   addToCart(product:any): void {
     this.productCarService.event.emit(product);   
-console.log('este es');
-console.log(this.productos);
-    console.log( this.productCarService.event.emit());
+
   }
 
   view(product:IProducts){
     alert(product.descripcion)
   }
 
+  clpToUsd() {
+    axios.get('https://mindicador.cl/api')
+    .then((response:any) => {
+      this.mindicador =  response.data.dolar.valor
+      console.log(this.mindicador);
+    })
+    .catch((e:any) => {
+        // Capturamos los errores
+        console.log('error: ', e);
+    })
+}
+
+  
 
 }
